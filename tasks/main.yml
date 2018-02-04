@@ -1,0 +1,23 @@
+---
+# tasks file for grafana
+
+- name: Add Grafana repo
+  yum_repository:
+    name: grafana
+    description: Grafana YUM repo
+    baseurl: "{{ grafana_repo_baseurl }}"
+    gpgkey: "{{ grafana_repo_gpgkey }}"
+    gpgcheck: yes
+    sslcacert: "{{ grafana_repo_sslcacert }}"
+
+- name: Install grafana and necessary packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ grafana_packages }}"
+
+- name: Start and enable grafana
+  systemd:
+    name: grafana-server
+    state: started
+    enabled: yes

@@ -1,0 +1,11 @@
+---
+# defaults file for grafana
+
+grafana_repo_baseurl: https://packagecloud.io/grafana/stable/el/6/$basearch
+grafana_repo_gpgkey: https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+grafana_repo_sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+grafana_packages:
+  - grafana
+  - fontconfig
+  - freetype
+  - urw-fonts
